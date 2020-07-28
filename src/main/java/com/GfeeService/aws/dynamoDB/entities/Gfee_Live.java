@@ -1,4 +1,4 @@
-package com.GfeeService.aws.DynamoDB.Entities;
+package com.GfeeService.aws.dynamoDB.entities;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;

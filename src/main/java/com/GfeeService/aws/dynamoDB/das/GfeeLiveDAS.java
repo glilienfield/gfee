@@ -1,7 +1,7 @@
-package com.GfeeService.aws.DynamoDB.DAS;
+package com.GfeeService.aws.dynamoDB.das;
 
 
-import com.GfeeService.aws.DynamoDB.Entities.Gfee_Live;
+import com.GfeeService.aws.dynamoDB.entities.Gfee_Live;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBQueryExpression;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
@@ -16,11 +16,11 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @Service
-public class GfeeDAS {
+public class GfeeLiveDAS {
 
     DynamoDBMapper mapper;
 
-    public GfeeDAS(DynamoDBMapper mapper) {
+    public GfeeLiveDAS(DynamoDBMapper mapper) {
         this.mapper = mapper;
     }
 
@@ -61,8 +61,6 @@ public class GfeeDAS {
 
         try {
             item = mapper.load(Gfee_Live.class, sellerNumber, productCode);
-            log.info("gfee: " + item.toString());
-
             if (item != null) {
                 log.info(String.format("Gfee found for sellerNumber %s and product code %s", sellerNumber, productCode));
                 result = item.getValue();

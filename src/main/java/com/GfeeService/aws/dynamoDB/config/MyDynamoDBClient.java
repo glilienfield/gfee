@@ -1,4 +1,4 @@
-package com.GfeeService.aws.DynamoDB.DAS;
+package com.GfeeService.aws.dynamoDB.config;
 
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.AWSCredentialsProvider;

@@ -41,9 +41,9 @@ public class GfeeHistDAS {
             List<Gfee_Hist> gfeeList = mapper.query(Gfee_Hist.class, queryExpression);
 
             if (gfeeList != null && gfeeList.size() == 1) {
-                log.info(String.format("Gfee found for SellerNo %s and product %s and epocTime %s", sellerNo, productCode, gfeePriceEpoc));
-                log.info("seller/product gfee info: " + gfeeList.get(0).toString());
                 result = gfeeList.get(0).getHistValue();
+                log.info(String.format("Gfee found for SellerNo %s and product %s and epocTime %s", sellerNo, productCode, gfeePriceEpoc));
+                log.info("seller/product gfee info: " + result);
             } else if (gfeeList != null && gfeeList.size() > 1) {
                 log.info(String.format("More than one Gfee value found for SellerNo %s and product %s and epocTime %s", sellerNo, productCode, gfeePriceEpoc));
             } else {

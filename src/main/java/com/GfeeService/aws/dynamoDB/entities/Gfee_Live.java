@@ -61,6 +61,6 @@ public class Gfee_Live {
 
     @Override
     public String toString() {
-        return "SellerNo=" + this.sellerNumber + ", product=" + this.name + ", gfee=" + this.value + ", code=" + this.productCode;
+        return "SellerNumber=" + this.sellerNumber + ", name=" + this.name + ", gfee=" + this.value + ", code=" + this.productCode;
     }
 }

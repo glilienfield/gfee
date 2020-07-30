@@ -27,9 +27,6 @@ public class GfeeLiveDAS {
     public Map<String, BigDecimal> getGfeeBySellerNo(String sellerNumber) {
 
         Map<String, BigDecimal> result = null;
-        Gfee_Live keySchema = new Gfee_Live();
-        keySchema.setSellerNumber(sellerNumber);
-
         try {
 
             Map<String, AttributeValue> paramMap = new HashMap<>();
@@ -62,8 +59,9 @@ public class GfeeLiveDAS {
         try {
             item = mapper.load(Gfee_Live.class, sellerNumber, productCode);
             if (item != null) {
-                log.info(String.format("Gfee found for sellerNumber %s and product code %s", sellerNumber, productCode));
                 result = item.getValue();
+                log.info(String.format("Gfee found for sellerNumber %s and product code %s", sellerNumber, productCode));
+                log.info("Gfee value: " + result);
             } else {
                 log.info(String.format("Gfee not found for sellerNumber %s and product code %s", sellerNumber, productCode));
             }

@@ -15,7 +15,7 @@ public class ProvisionTablesController {
 
     @RequestMapping("/provision")
     public String provisionTables() {
-        provisionTables.provisionTables();
-        return "Completed table provisioning";
+        new Thread(()->provisionTables.provisionTables()).start();
+        return "Submitted table provisioning request";
     }
 }

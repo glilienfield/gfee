@@ -6,10 +6,10 @@ Live gfee request urls: </br>
 /gfee/live/{sellerNo}/{productCode} - retrieve a seller's gfee for specific product  </br>
  </br>
 Historical gfee request urls: </br>
-/gfee/hist/{sellerNumber}/{productCode}/{gfeePriceEpoc} - retrieve a seller's historical gfee value a specific product at a specific point in time </br>
+/gfee/hist/{sellerNumber}/{productCode}/{gfeePriceEpoc} - retrieve a seller's historical gfee value for a specific product at a specific point in time </br>
  </br>
 Data provisioning  </br>
-/provision - Provision small set of test data  </br>
+/provision - Provision a small set of test data  </br>
  </br> 
 Notes: </br>
 1. all requests are "Get" requests </br>

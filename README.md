@@ -14,5 +14,24 @@ Data provisioning  </br>
 Notes: </br>
 1. all requests are "Get" requests </br>
 2. times are represented in epoc time </br>
-3. provisioning is done asynchronously...give it about a minute to complete before requesting data...verify in your aws console
-4. add aws credentials to application.properties file
+3. provisioning is done asynchronously...give it about a minute to complete before requesting data...verify in your aws console </br>
+4. add aws credentials to application.properties file </br>
+</br>
+Live data: </br>
+sellers: 111111111 and 22222222 </br>
+product codes: 100, 101, 102 </br>
+</br>
+Historical data:</br>
+intervals for 4 histrical values of gfee for seller '1111111' and product code = '100': </br>
+startEpocTime: 1588330800000 </br>
+endEpocTime: 1589540400000</br>
+</br>
+startEpocTime: 1589540405000 </br>
+endEpocTime: 1591009200000</br>
+</br>
+startEpocTime: 1591009205000 </br>
+endEpocTime: 1592218800000</br>
+</br></br>
+startEpocTime: 1592218805000 </br>
+endEpocTime: 99999999999999</br>
+</br>

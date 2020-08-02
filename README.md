@@ -8,8 +8,8 @@ Spring Boot application prototyping a limited Gfee service, done to validate a p
 <b>Historical gfee request urls: </b></br>
 /gfee/hist/{sellerNumber}/{productCode}/{gfeePriceEpoc} - retrieve a seller's historical gfee value for a specific product at a specific point in time </br>
 </br><b>Update gfee for a specific seller and product and versions old value:</b></br>
-/gfee/update/{sellerNumber}/{productCode}/{value}
-</br><b>Data provisioning </b>
+/gfee/update/{sellerNumber}/{productCode}/{value}</br>
+</br><b>Data provisioning </b></br>
 </br>/provision - Provision dynamodb tables and a small set of test data
 </br><b>Data Model:</b></br>
 Live gfee values for each seller / product are persistent in a dynamoDB table named "Gfee_Live." Querying by seller number will return the gfee for all of a seller's products. Querying by seller and product will return just that product's gfee for that seller </br>

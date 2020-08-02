@@ -25,13 +25,12 @@ The current live value also has a corresponding item in the Gfee_Hist table, whi
  <li>dynamodb.accessKey</li>
  <li>dynamodb.secrectKey</li>
 </ul>
-</br>
 <b>Live data: </b></br>
 sellers: 111111111 and 22222222 </br>
 product codes: 100, 101, 102 </br>
 </br>
 <b>Historical data:</b></br>
-intervals for 4 histrical values of gfee for seller '1111111' and product code = '100': </br>
+Intervals for 4 historical values of gfee for seller '1111111' and product code = '100': </br>
 startEpocTime: 1588330800000 </br>
 endEpocTime: 1589540400000</br>
 </br>

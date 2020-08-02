@@ -95,6 +95,10 @@ public class Gfee_Hist {
 
     @Override
     public String toString() {
-        return "sellerNumber="+this.sellerNumber+", productCode="+this.productCode+", name="+this.name+", startEpocTime="+this.startEpocTime+", endEpocTime="+this.endEpocTime+", value="+this.histValue;
+        return "sellerProduct="+this.sellerProduct+", sellerNumber="+this.sellerNumber+", productCode="+this.productCode+", name="+this.name+", startEpocTime="+this.startEpocTime+", endEpocTime="+this.endEpocTime+", histValue="+this.histValue;
+    }
+
+    public Gfee_Hist duplicate() {
+        return new Gfee_Hist(sellerProduct, endEpocTime, startEpocTime, name, productCode, sellerNumber, histValue);
     }
 }

@@ -11,15 +11,15 @@ import java.math.BigDecimal;
 public class Gfee_Live {
     private String sellerNumber;
     private String name;
-    private BigDecimal value;
+    private BigDecimal gfee;
     private int productCode;
 
     public Gfee_Live() {}
 
-    public Gfee_Live(String sellerNumber, String name, BigDecimal value, int productCode) {
+    public Gfee_Live(String sellerNumber, String name, BigDecimal gfee, int productCode) {
         this.sellerNumber = sellerNumber;
         this.name = name;
-        this.value = value;
+        this.gfee = gfee;
         this.productCode = productCode;
     }
 
@@ -41,13 +41,13 @@ public class Gfee_Live {
         this.productCode = productCode;
     }
 
-    @DynamoDBAttribute(attributeName = "value")
-    public BigDecimal getValue() {
-        return value;
+    @DynamoDBAttribute(attributeName = "gfee")
+    public BigDecimal getGfee() {
+        return gfee;
     }
 
-    public void setValue(BigDecimal value) {
-        this.value = value;
+    public void setGfee(BigDecimal gfee) {
+        this.gfee = gfee;
     }
 
     @DynamoDBAttribute(attributeName = "name")
@@ -61,6 +61,10 @@ public class Gfee_Live {
 
     @Override
     public String toString() {
-        return "SellerNumber=" + this.sellerNumber + ", name=" + this.name + ", gfee=" + this.value + ", code=" + this.productCode;
+        return "SellerNumber=" + this.sellerNumber + ", name=" + this.name + ", gfee=" + this.gfee + ", productCode=" + this.productCode;
+    }
+
+    public Gfee_Live duplicate() {
+        return new Gfee_Live(sellerNumber, name, gfee, productCode);
     }
 }

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 
 @Slf4j
 @RestController
@@ -20,9 +21,9 @@ public class HistGfeeController {
     @RequestMapping("/{sellerNumber}/{productCode}/{gfeePriceEpoc}")
     public BigDecimal getGfeeBySellerNo(@PathVariable("sellerNumber") String sellerNumber,
                                                      @PathVariable("productCode") int productCode,
-                                                     @PathVariable("gfeePriceEpoc") long gfeePriceEpoc) {
+                                                     @PathVariable("gfeePriceEpoc") BigInteger gfeePriceEpoc) {
         long start = System.currentTimeMillis();
-        BigDecimal result = gfeeHistDas.getProductGfeeForSellerNo(sellerNumber, productCode, gfeePriceEpoc);
+        BigDecimal result = gfeeHistDas.getProductGfeeForSellerNo(sellerNumber, productCode, gfeePriceEpoc).getHistValue();
         log.info("Time to retrieve seller's gfee (ms) " + sellerNumber + ": " + (System.currentTimeMillis() - start));
         return result;
     }

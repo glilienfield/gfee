@@ -29,7 +29,7 @@ public class LiveGfeeController {
     @RequestMapping("/{sellerNo}/{product}")
     public BigDecimal getProductGfeeForSellerNo(@PathVariable("sellerNo") String sellerNo, @PathVariable("product") int product) {
         long start = System.currentTimeMillis();
-        BigDecimal result = gfeeLiveDas.getProductGfeeForSellerNo(sellerNo, product);
+        BigDecimal result = gfeeLiveDas.getProductGfeeForSellerNo(sellerNo, product).getGfee();
         log.info(String.format("Time to retrieve gfee for seller %s and product %s: %d (ms) ", sellerNo, product, (System.currentTimeMillis() - start)));
         return result;
     }

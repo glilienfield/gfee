@@ -7,7 +7,7 @@ import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,9 +22,9 @@ public class GfeeHistDAS {
         this.mapper = mapper;
     }
 
-    public BigDecimal getProductGfeeForSellerNo(String sellerNo, int productCode, long gfeePriceEpoc) {
+    public Gfee_Hist getProductGfeeForSellerNo(String sellerNo, int productCode, BigInteger gfeePriceEpoc) {
 
-        BigDecimal result = null;
+        Gfee_Hist result = null;
         String sellerProduct = sellerNo + "|" + productCode;
 
         try {
@@ -34,14 +34,13 @@ public class GfeeHistDAS {
 
             DynamoDBQueryExpression<Gfee_Hist> queryExpression = new DynamoDBQueryExpression<Gfee_Hist>()
                     .withKeyConditionExpression("sellerProduct = :sellerProduct and endEpocTime >= :gfeePriceEpoc")
-                    .withProjectionExpression("histValue")
                     .withFilterExpression("startEpocTime <= :gfeePriceEpoc")
                     .withExpressionAttributeValues(paramMap);
 
             List<Gfee_Hist> gfeeList = mapper.query(Gfee_Hist.class, queryExpression);
 
             if (gfeeList != null && gfeeList.size() == 1) {
-                result = gfeeList.get(0).getHistValue();
+                result = gfeeList.get(0);
                 log.info(String.format("Gfee found for SellerNo %s and product %s and epocTime %s", sellerNo, productCode, gfeePriceEpoc));
                 log.info("seller/product gfee info: " + result);
             } else if (gfeeList != null && gfeeList.size() > 1) {

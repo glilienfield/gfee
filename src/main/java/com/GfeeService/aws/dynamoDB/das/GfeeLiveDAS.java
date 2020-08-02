@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,10 +41,10 @@ public class GfeeLiveDAS {
 
             if (gfeeList != null) {
                 log.info(String.format("Gfee for sellerNumber %s was found", sellerNumber));
-                result = gfeeList.stream().collect(Collectors.toMap(Gfee_Live::getName, Gfee_Live::getValue));
+                result = gfeeList.stream().collect(Collectors.toMap(Gfee_Live::getName, Gfee_Live::getGfee));
             } else {
                 log.info(String.format("sellerNumber %s was not found", sellerNumber));
-                result = new HashMap<>();
+                result = Collections.EMPTY_MAP;
             }
         } catch (Exception e) {
             log.debug(e.getMessage());
@@ -51,23 +52,21 @@ public class GfeeLiveDAS {
         return result;
     }
 
-    public BigDecimal getProductGfeeForSellerNo(String sellerNumber, int productCode) {
+    public Gfee_Live getProductGfeeForSellerNo(String sellerNumber, int productCode) {
 
-        Gfee_Live item;
-        BigDecimal result = null;
+        Gfee_Live item = null;
 
         try {
             item = mapper.load(Gfee_Live.class, sellerNumber, productCode);
             if (item != null) {
-                result = item.getValue();
                 log.info(String.format("Gfee found for sellerNumber %s and product code %s", sellerNumber, productCode));
-                log.info("Gfee value: " + result);
+                log.info("Gfee value: " + item.getGfee());
             } else {
                 log.info(String.format("Gfee not found for sellerNumber %s and product code %s", sellerNumber, productCode));
             }
         } catch (Exception e) {
             log.debug(e.getMessage());
         }
-        return result;
+        return item;
     }
 }

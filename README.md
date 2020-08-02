@@ -1,27 +1,37 @@
 # gfee
-Spring Boot application prototyping a Gfee service. Currently implements only read operations for live and historical values. 
+Spring Boot application prototyping a limited Gfee service, done to validate a potential dynamoDB data model. Currently supports reading live and historial gfee values for a seller's products, and updating a live gfee value with versioning.
 
-Live gfee request urls: </br>
+<b>Live gfee request urls: </b></br>
 /gfee/live/{sellerNo} - retrieve a seller's gfee for all products  </br>
 /gfee/live/{sellerNo}/{productCode} - retrieve a seller's gfee for specific product  </br>
  </br>
-Historical gfee request urls: </br>
+<b>Historical gfee request urls: </b></br>
 /gfee/hist/{sellerNumber}/{productCode}/{gfeePriceEpoc} - retrieve a seller's historical gfee value for a specific product at a specific point in time </br>
  </br>
-Data provisioning  </br>
-/provision - Provision a small set of test data  </br>
- </br> 
-Notes: </br>
-1. all requests are "Get" requests </br>
-2. times are represented in epoc time </br>
-3. provisioning is done asynchronously...give it about a minute to complete before requesting data...verify in your aws console </br>
-4. add aws credentials to application.properties file </br>
+<b>Update gfee for a specific seller and product and versions old value:</b></br>
+/gfee/update/{sellerNumber}/{productCode}/{value}</br>
+<b>Data provisioning  </b></br></br>
+/provision - Provision dynamodb tables and a small set of test data  </br>
+</br> </br> 
+<b>Data Model:</b></br>
+Live gfee values for each seller / product are persistent in a dynamoDB table named "Gfee_Live." Querying by seller number will return the gfee for all of a seller's products. Querying by seller and product will return just that product's gfee for that seller </br>
+Historical gfee values for each seller / product are persistend in a dynamoDB table named "Gfee_Hist." Each item has startEpocTime and endEpocTime values indicating when the value become effecitive and when it was replaced with a new value. </br>
+The current live value also has a corresponding item in the Gfee_Hist table, which is needed for propery quering for historical gfee values. This item has an endEpocTime equal to "99999999999999." This value represents a date in the year 5138, allowing a partition key index for the historical item corresponding to the current live item.</br>
+<b>Notes: </b></br>
+1. All requests are "Get" requests </br>
+2. Times are represented in epoc time </br>
+3. Provisioning is done asynchronously...give it about a minute to complete before requesting data...verify in your aws console </br>
+4. Add aws credentials to application.properties file </br>
+<ul>
+ <li>dynamodb.accessKey</li>
+ <li>dynamodb.secrectKey</li>
+ <ul>
 </br>
-Live data: </br>
+<b>Live data: </b></br>
 sellers: 111111111 and 22222222 </br>
 product codes: 100, 101, 102 </br>
 </br>
-Historical data:</br>
+<b>Historical data:</b></br>
 intervals for 4 histrical values of gfee for seller '1111111' and product code = '100': </br>
 startEpocTime: 1588330800000 </br>
 endEpocTime: 1589540400000</br>

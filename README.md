@@ -29,7 +29,7 @@ sellers: 111111111 and 22222222 </br>
 product codes: 100, 101, 102 </br>
 </br>
 <b>Historical data:</b></br>
-Intervals for 4 historical values of gfee for seller '1111111' and product code = '100': </br>
+Intervals for 4 historical values of gfee for seller '1111111' and product code = '100': </br></br>
 startEpocTime: 1588330800000 </br>
 endEpocTime: 1589540400000</br>
 </br>
@@ -38,7 +38,7 @@ endEpocTime: 1591009200000</br>
 </br>
 startEpocTime: 1591009205000 </br>
 endEpocTime: 1592218800000</br>
-</br></br>
+</br>
 startEpocTime: 1592218805000 </br>
 endEpocTime: 99999999999999</br>
 </br>

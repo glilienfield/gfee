@@ -14,7 +14,7 @@ Spring Boot application prototyping a limited Gfee service, done to validate a p
 </br><b>Data Model:</b></br>
 Live gfee values for each seller / product are persistent in a dynamoDB table named "Gfee_Live." Querying by seller number will return the gfee for all of a seller's products. Querying by seller and product will return just that product's gfee for that seller </br>
 Historical gfee values for each seller / product are persistend in a dynamoDB table named "Gfee_Hist." Each item has startEpocTime and endEpocTime values indicating when the value become effecitive and when it was replaced with a new value. </br>
-The current live value also has a corresponding item in the Gfee_Hist table, which is needed for propery quering for historical gfee values. This item has an endEpocTime equal to "99999999999999." This value represents a date in the year 5138, allowing a partition key index for the historical item corresponding to the current live item.</br>
+The current live value also has a corresponding item in the Gfee_Hist table, which is needed for propery quering for historical gfee values. This item has an endEpocTime equal to "99999999999999", which represents a date in the year 5138. Utilizing a specific "special" endEpoctime allows quering on a partition key index for getting the historical item corresponding to the current live item.</br>
 <b>Notes: </b></br>
 1. All requests are "Get" requests </br>
 2. Times are represented in epoc time </br>
